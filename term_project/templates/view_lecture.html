@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View_lecture</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+{% if role == "tutee" %}
+<p style="font-size: 1.5em"><b>My Lecture</b></p>
+<table border="1">
+    <th>subject</th>
+    <th>lecture name</th>
+    <th>tutor</th>
+    <th>price</th>
+    {% for lecture in lecinfo %}
+    <tr>
+        <td>{{lecture[0]}}</td>
+        <td>{{lecture[1]}}</td>
+        <td>{{lecture[2]}}</td>
+        <td>{{lecture[4]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% if role == "tutor" %}
+<p style="font-size: 1.5em"><b>My Lecture</b></p>
+<table border="1">
+    <th>subject</th>
+    <th>lecture name</th>
+    <th># of student</th>
+    <th>price</th>
+    {% for lecture in mylec %}
+    <tr>
+        <td>{{lecture[0]}}</td>
+        <td>{{lecture[1]}}</td>
+        <td>{{lecture[3]}}</td>
+        <td>{{lecture[4]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p style="font-size: 1.5em"><b>Registered Lecture</b></p>
+<table border="1">
+    <th>subject</th>
+    <th>lecture name</th>
+    <th>tutor</th>
+    <th>price</th>
+    {% for lecture in reglec %}
+    <tr>
+        <td>{{lecture[0]}}</td>
+        <td>{{lecture[1]}}</td>
+        <td>{{lecture[2]}}</td>
+        <td>{{lecture[4]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<p style="font-size: 1.5em"><b>My Pass</b></p>
+<table border="1">
+    <th>tutor</th>
+    <th>price</th>
+    {% for pass in passinfo %}
+    <tr>
+        <td>{{pass[0]}}</td>
+        <td>{{pass[1]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<form action="/return" method="post">
+    <input type="hidden" name="id" value={{id}}>
+    <input type="hidden" name="whereto" value="login_success.html">
+    <input type="submit" name="return" value="return">
+</form>
+</body>
+</html>

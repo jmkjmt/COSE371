@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>charge_info</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+
+<a style="font-size : 1.5em">Charging Request Info</a>
+
+
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>money</th>
+        <th>confirm</th>
+    </tr>
+    {% for charge in chargeinfo %}
+    <tr>
+        <td>{{charge[0]}}</td>
+        <td>{{charge[1]}}</td>
+        <td>
+            <form action="/charge_confirm" method="post">
+                <input type="hidden" name="id" value="{{charge[0]}}">
+                <input type="hidden" name="money" value="{{charge[1]}}">
+                <input type="submit" value="confirm">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+<form action="/return" method="post">
+    <input type="hidden" name="id" value={{id}}>
+    <input type="hidden" name="whereto" value="login_success.html">
+    <input type="submit" name="return" value="return">
+</form>
+</body>
+</html>

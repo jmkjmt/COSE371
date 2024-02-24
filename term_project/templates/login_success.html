@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login_success</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+
+{% if userinfo[0] == 'admin' %}
+Admin function<br>
+<form action="/info" method="post">
+    <input type="hidden" name="id" value={{userinfo[0]}}>
+    <input type="submit" name="who_info" value="users info">
+    <input type="submit" name="who_info" value="trades info">
+    <input type="submit" name="who_info" value="charge info">
+</form><br>
+{% endif %}
+
+View lecture<br>
+
+<form action="/info" method="post">
+    <input type="hidden" name="id" value="{{userinfo[0]}}">
+    <input type="submit" name="who_info" value="my info">
+</form><br>
+===============================================<br>
+
+<table border="1">
+    <th style="font-weight:bold">popular subject</th>
+    <th style="font-weight:bold">popular lecture</th>
+    <th style="font-weight:bold">popular tutor</th>
+    {% for lectures in popular %}
+    <tr>
+        <td>{{lectures[0]}}</td>
+        <td>{{lectures[1]}}</td>
+        <td>{{lectures[2]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p style="font-size: 2em"><b>User Info</b></p><br>
+current user: {{userinfo[0]}}/
+<form action="/logout" method="post" style="display: inline">
+    <input type="hidden" name="id" value="{{userinfo[0]}}">
+    <input type="submit" name="logout" value="logout"><br>
+</form>
+credit: {{userinfo[1]}}/
+<form action="/charge" method="post" style="display:inline">
+    <input type="hidden" name="id" value="{{userinfo[0]}}">
+    <input type="submit" name="charge" value="charge">
+</form>
+<br>
+rating: {{userinfo[2]}}<br>
+
+<p style="font-size: 2em"><b>Lectures</b></p><br>
+{% if userinfo[3] == 'tutor' %}
+<form action="/add" method="post">
+    <input type="hidden" name="id" value="{{userinfo[0]}}">
+    <input type="submit" name="add" value="add"><br>
+</form>
+{% endif %}
+<table border="1">
+    <th style="font-weight:bold">code</th>
+    <th style="font-weight:bold">name</th>
+    <th style="font-weight:bold">price</th>
+    <th style="font-weight:bold">tutor</th>
+    <th style="font-weight:bold"> register</th>
+    {% for lecture in lectures %}
+    <tr>
+        <td>{{lecture[0]}}</td>
+        <td>{{lecture[1]}}</td>
+        <td>{{lecture[2]}}</td>
+        <td>{{lecture[3]}}</td>
+        <td>
+            <form action="/lec_reg" method="post">
+                <input type="hidden" name="code" value="{{lecture[0]}}">
+                <input type="hidden" name="name" value="{{lecture[1]}}">
+                <input type="hidden" name="tutor" value="{{lecture[3]}}">
+                <input type="hidden" name="id" value="{{userinfo[0]}}">
+                <input type="submit" name="register" value="register">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p style="font-size: 2em"><b>DB Tutor Pass</b></p><br>
+{% if userinfo[3] == 'tutor' %}
+<form action="/add_pass" method="post">
+    <input type="hidden" name="id" value="{{userinfo[0]}}">
+    <input type="submit" name="add" value="add"><br>
+</form>
+{% endif %}
+<table border="1">
+    <th style="font-weight:bold">tutor</th>
+    <th style="font-weight:bold">price</th>
+    <th></th>
+    {% for pass in passinfo %}
+    <tr>
+        <td>{{pass[0]}}</td>
+        <td>{{pass[1]}}</td>
+        <td>
+            <form action="/pass_reg" method="post">
+                <input type="hidden" name="tutor" value="{{pass[0]}}">
+                <input type="hidden" name="id" value="{{userinfo[0]}}">
+                <input type="submit" name="register" value="register">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>

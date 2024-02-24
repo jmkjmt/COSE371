@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trade_info</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+
+<a style="font-size : 1.5em">Lecture trades Info</a>
+<table border="1">
+    <tr>
+        <th>tutee</th><br>
+        <th>tutor</th><br>
+        <th>code</th><br>
+        <th>lecture name</th><br>
+        <th>lecture price</th><br>
+    </tr>
+    {% for row in tradeinfo %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a style="font-size : 1.5em">Pass trades Info</a>
+<table border="1">
+    <tr>
+        <th>tutee</th><br>
+        <th>tutor</th><br>
+        <th>price</th><br>
+    </tr>
+    {% for row in passinfo %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="/return" method="post">
+    <input type="hidden" name="id" value={{id}}>
+    <input type="hidden" name="whereto" value="login_success.html">
+    <input type="submit" name="return" value="return">
+</form>
+
+</body>
+</html>

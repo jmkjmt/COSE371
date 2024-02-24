@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pass_reg</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+<p style="font-size: 1.5em"><b>Pass INFO</b></p><br>
+<table border="1">
+        <th>tutor</th>
+        <th>price</th>
+        <tr>
+            <td>{{passinfo[0]}}</td>
+            <td>{{passinfo[1]}}</td>
+        </tr>
+</table><br>
+Your credit: {{userinfo[1]}}<br>
+Your rating: {{userinfo[2]}}<br><br>
+Total price: {{passinfo[1]}}<br>
+Discount price: {{discount}}<br><br>
+=============================================<br>
+Final price: {{final}}<br>
+<form action="/conf" method="post">
+    <input type="hidden" name="what" value="pass">
+    <input type="hidden" name="tutee" value="{{userinfo[0]}}">
+    <input type="hidden" name="d_price" value="{{final}}">
+    <input type="hidden" name="tutor" value="{{passinfo[0]}}">
+    <input type="submit" name="confirm" value="confirm">
+</form>
+<form action="/return" method="post">
+    <input type="hidden" name="id" value={{userinfo[0]}}>
+    <input type="hidden" name="whereto" value="login_success.html">
+    <input type="submit" name="confirm" value="cancel">
+</form>
+
+</body>
+</html>

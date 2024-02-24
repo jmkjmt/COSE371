@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add_lecture</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+Subject List<br>
+<table border="1">
+    {% for subject in subjects %}
+    <tr>
+        <td>{{subject[0]}}</td>
+        <td>{{subject[1]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="/add_reg" method="post">
+    <input type="hidden" name="id" value="{{id}}">
+Code:<input type="text" name="code" value=""><br>
+Name:<input type="text" name="name" value=""><br>
+Price:<input type="number" name="price" value=""><br>
+<input type="submit" name="add" value="add"><br>
+</form>
+
+<form action="/return" method="post">
+    <input type="hidden" name="id" value={{id}}>
+    <input type="hidden" name="whereto" value="login_success.html">
+    <input type="submit" name="cancel" value="cancel">
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add_pass</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+
+<form action="/insert_pass" method="post">
+    Your id: {{id}}<br>
+    <input type="hidden" name="id" value="{{id}}">
+Price:<input type="number" name="price" value=""><br>
+<input type="submit" name="add" value="add"><br>
+</form>
+
+<form action="/return" method="post">
+    <input type="hidden" name="id" value={{id}}>
+    <input type="hidden" name="whereto" value="login_success.html">
+    <input type="submit" name="cancel" value="cancel">
+</form>
+
+</body>
+</html>

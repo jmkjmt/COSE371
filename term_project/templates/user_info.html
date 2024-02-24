@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user_info</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+
+<p style="font-size : 1.5em">User Info</p><br>
+<table border="1">
+    <tr>
+        <th>id</th><br>
+        <th>password</th><br>
+        <th>credit</th><br>
+        <th>ratings</th><br>
+        <th>role</th><br>
+    </tr>
+    {% for row in userinfo %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="/return" method="post">
+    <input type="hidden" name="id" value={{id}}>
+    <input type="hidden" name="whereto" value="login_success.html">
+    <input type="submit" name="return" value="return">
+</form>
+
+</body>
+</html>

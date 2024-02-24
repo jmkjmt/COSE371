@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>charge</title>
+</head>
+<body>
+<div style="font-size: 2em"><b>DB Online Learning Platform</b></div>
+
+<a style="font-size : 1.7em"><b>Page to Request of Charging Money</b></a>
+
+<p style="font-size: 2em"><b>User Info</b></p>
+current user: {{userinfo[0]}}<br>
+credit: {{userinfo[1]}}<br>
+rating: {{userinfo[2]}}<br><br>
+
+<form action="/money_charge_request" method="post">
+    money to charge<br>
+    <input type="hidden" name="id" value="{{userinfo[0]}}">
+    <input type="number" name="money" value="0">
+    <input type="submit" value="request">
+</form>
+
+</body>
+</html>
